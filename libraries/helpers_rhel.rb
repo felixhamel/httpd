@@ -19,8 +19,7 @@ module HttpdCookbook
       end
 
       def elversion
-        return 6 if node['platform_version'].to_i == 2013
-        return 6 if node['platform_version'].to_i == 2014
+        return 6 if node['platform_version'].to_i >= 2013 and node['platform'] == 'amazon'
         return 7 if node['platform_version'].to_i == 20
         return 7 if node['platform_version'].to_i == 21
         node['platform_version'].to_i
